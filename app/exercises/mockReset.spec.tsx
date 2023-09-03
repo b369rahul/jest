@@ -43,11 +43,14 @@ import { Counter } from "../components/Counter";
 import * as utils from "../utils/getSystemTimezone";
 import { render } from "@testing-library/react";
 
+const utilsSpy = jest.spyOn(utils, "getSystemTimezone");
+
 describe("mockReset", () => {
+  afterEach(() => utilsSpy.mockReset());
   test("mockReset test", () => {
-    const utilsSpy = jest
-      .spyOn(utils, "getSystemTimezone")
-      .mockImplementation(() => "America/New_york");
+    // const utilsSpy = jest
+    //   .spyOn(utils, "getSystemTimezone")
+    //   .mockImplementation(() => "America/New_york");
 
     const { rerender } = render(<Counter />);
     expect(utilsSpy).toHaveBeenCalledTimes(1);
@@ -59,9 +62,9 @@ describe("mockReset", () => {
   });
 
   test("Difference between mockReset and mockRestore", () => {
-    const utilsSpy = jest
-      .spyOn(utils, "getSystemTimezone")
-      .mockImplementation(() => "America/New_York");
+    // const utilsSpy = jest
+    //   .spyOn(utils, "getSystemTimezone")
+    //   .mockImplementation(() => "America/New_York");
 
     console.log(utils.getSystemTimezone(), "from test");
     expect(utilsSpy).toHaveBeenCalledTimes(1);

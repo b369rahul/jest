@@ -12,8 +12,10 @@ export const Counter = ({
     <>
       <div>{counter}</div>
       <button
+        role="button"
         data-testid="counter-button"
         onClick={() => {
+          console.log("this is called");
           updateCounter(2);
           onCounterUpdate?.();
         }}

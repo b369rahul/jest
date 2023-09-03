@@ -13,7 +13,7 @@ jest.mock("../../utils/getSystemTimezone", () => ({
 describe("jest.mock", () => {
   test("Mock with custom implementation and spy", () => {
     console.log(getSystemTimezone());
-    // 🤔 This will work here because custom implementation we provided is not jest function, jest can
+    // 🤔 This will work here because custom implementation we provided is jest function, jest can
     // track it. Earlier we provided direct implementation which jest can't track on its own.
     expect(getSystemTimezone).toHaveBeenCalledTimes(1);
   });
