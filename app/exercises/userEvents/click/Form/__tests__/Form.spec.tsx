@@ -6,6 +6,9 @@
  * It simply expects a element to simulate a click on. After clicking we can make all the assertions to ensure that
  * component behaved correctly. This includes anything like if on clicking we are making API call, we can assert
  * that too.
+ *
+ * This covers only click event, https://testing-library.com/docs/ecosystem-user-event/ documentation has
+ * everything this library has to offer in great details
  */
 
 // Here is the complete test case for testing simple form submission. This used concepts from many other part of the
