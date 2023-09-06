@@ -20,6 +20,5 @@ describe("jest.fn", () => {
     render(<Counter onCounterUpdate={onCounterUpdate} />);
     userEvent.click(screen.getByTestId("counter-button"));
     await waitFor(() => expect(onCounterUpdate).toHaveBeenCalledTimes(1));
-    expect(onCounterUpdate).toHaveBeenCalledTimes(1);
   });
 });
