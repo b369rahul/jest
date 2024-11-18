@@ -34,7 +34,7 @@ describe("mockRestore", () => {
   test("mockRestore first test", () => {
     render(<Counter />);
     // 🦄 Try commenting following line
-    useCounterSpy.mockRestore();
+    // useCounterSpy.mockRestore();
   });
 
   test("mockRestore second test", () => {
@@ -49,7 +49,7 @@ describe("mockRestore", () => {
     expect(onCounterUpdate).toHaveBeenCalledTimes(1);
 
     // 🦄 Try commenting following line and check the log `Counter Updated`
-    onCounterUpdate.mockRestore();
+    onCounterUpdate.mockReset();
 
     fireEvent.click(screen.getByTestId("counter-button"));
     expect(onCounterUpdate).toHaveBeenCalledTimes(1);

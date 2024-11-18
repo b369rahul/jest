@@ -30,12 +30,12 @@ describe("jest.runAllTimers", () => {
 
     // At this point in time, the callback should not have been called yet
     expect(callback).not.toBeCalled();
-
+    // jest.advanceTimersByTime(2000);
     // Fast-forward until all timers have been executed
     jest.runAllTimers();
 
     // Now our callback should have been called!
     expect(callback).toBeCalled();
-    expect(callback).toHaveBeenCalledTimes(1);
+    expect(callback).toHaveBeenCalledTimes(2);
   });
 });

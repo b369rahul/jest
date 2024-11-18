@@ -21,6 +21,7 @@ jest.mock("../../utils/defaultExport");
 describe("jest.mock", () => {
   test("Simple mock", () => {
     console.log(getSystemTimezone());
+    expect(getSystemTimezone).toHaveBeenCalledTimes(2);
   });
 
   test("Simple mock", () => {

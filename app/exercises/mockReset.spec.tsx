@@ -43,38 +43,39 @@ import { Counter } from "../components/Counter";
 import * as utils from "../utils/getSystemTimezone";
 import { render } from "@testing-library/react";
 
-const utilsSpy = jest.spyOn(utils, "getSystemTimezone");
+const utilsSpy = jest.fn(()=>"ASDsad")
 
 describe("mockReset", () => {
-  afterEach(() => utilsSpy.mockReset());
+  // afterEach(() => utilsSpy.mockReset());
   test("mockReset test", () => {
     // const utilsSpy = jest
     //   .spyOn(utils, "getSystemTimezone")
     //   .mockImplementation(() => "America/New_york");
 
-    const { rerender } = render(<Counter />);
-    expect(utilsSpy).toHaveBeenCalledTimes(1);
+    // const { rerender } = render(<Counter />);
+    // expect(utilsSpy).toHaveBeenCalledTimes(1);
+    console.log(utilsSpy)
+    utilsSpy.mockRestore();
+    console.log(utilsSpy)
 
-    utilsSpy.mockReset();
-
-    rerender(<Counter />);
-    expect(utilsSpy).toHaveBeenCalledTimes(1);
+    // rerender(<Counter />);
+    // expect(utils.getSystemTimezone).toHaveBeenCalledTimes(1);
   });
 
-  test("Difference between mockReset and mockRestore", () => {
-    // const utilsSpy = jest
-    //   .spyOn(utils, "getSystemTimezone")
-    //   .mockImplementation(() => "America/New_York");
+  // test("Difference between mockReset and mockRestore", () => {
+  //   // const utilsSpy = jest
+  //   //   .spyOn(utils, "getSystemTimezone")
+  //   //   .mockImplementation(() => "America/New_York");
 
-    console.log(utils.getSystemTimezone(), "from test");
-    expect(utilsSpy).toHaveBeenCalledTimes(1);
+  //   console.log(utils.getSystemTimezone(), "from test");
+  //   expect(utilsSpy).toHaveBeenCalledTimes(1);
 
-    console.log(utils.getSystemTimezone);
-    // 🦄 change following line to mockRestore.
-    utilsSpy.mockReset();
-    console.log(utils.getSystemTimezone);
+  //   console.log(utils.getSystemTimezone);
+  //   // 🦄 change following line to mockRestore.
+  //   utilsSpy.mockRestore();
+  //   console.log(utils.getSystemTimezone);
 
-    console.log(utils.getSystemTimezone(), "from test");
-    expect(utilsSpy).toHaveBeenCalledTimes(1);
-  });
+  //   console.log(utils.getSystemTimezone(), "from test");
+  //   expect(utilsSpy).toHaveBeenCalledTimes(1);
+  // });
 });

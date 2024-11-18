@@ -12,15 +12,14 @@ describe("jest.spyOn mockImplementation", () => {
   // Do not worry about why this is happening, for now just keep in mind this behavior. this will help us to
   // understand the next module in better way.
   afterEach(() => getSystemTimezoneSpy.mockReset());
-
+  getSystemTimezoneSpy.mockImplementation(() => "America/New_York");
   test("Mock with custom implementation and spy", () => {
-    getSystemTimezoneSpy.mockImplementation(() => "America/New_York");
     console.log(utils.getSystemTimezone());
     expect(getSystemTimezoneSpy).toHaveBeenCalledTimes(1);
   });
 
   test("Mock with custom implementation and spy", () => {
-    getSystemTimezoneSpy.mockImplementation(() => "America/Texas");
+    // getSystemTimezoneSpy.mockImplementation(() => "America/Texas");
     console.log(utils.getSystemTimezone());
     expect(getSystemTimezoneSpy).toHaveBeenCalledTimes(1);
   });

@@ -8,17 +8,17 @@ import { getSystemTimezone } from "../../utils/getSystemTimezone";
 import getUser from "../../utils/defaultExport";
 
 jest.mock("../../utils/getSystemTimezone", () => ({
-  getSystemTimezone: () => "America/New_York",
+  getSystemTimezone: jest.fn(() => "America/New_York"),
 }));
 
 jest.mock("../../utils/defaultExport", () => ({
   // 🦄 Try removing following line, any guesses why this will not work after removing this?
   __esModule: true,
-  default: () => ({
+  default: jest.fn(() => ({
     user: "mock@mock.com",
     country: "Mock",
     username: "Mock",
-  }),
+  })),
 }));
 // 🦄 comment  above mock and use following mock
 // jest.mock("../../utils/defaultExport", () => () => ({
@@ -32,10 +32,11 @@ describe("jest.mock", () => {
     console.log(getSystemTimezone());
     // 🤔 Uncomment following line and check. Wait what? We called this function right? Then why not able to check. Read on to the next part
     // to understand this.
-    // expect(getSystemTimezone).toHaveBeenCalledTimes(1);
+    expect(getSystemTimezone).toHaveBeenCalledTimes(1);
   });
 
   test("Simple mock", () => {
     console.log(getUser());
+    expect(getUser).toHaveBeenCalledTimes(1);
   });
 });

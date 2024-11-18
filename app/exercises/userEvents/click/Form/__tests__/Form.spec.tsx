@@ -35,7 +35,7 @@ describe("userEvent.click", () => {
 
     // check that we are correctly using the external library axios
     await waitFor(() =>
-      expect(get).toHaveBeenCalledWith("https://api.example.com/random")
+      expect(axios.get).toHaveBeenCalledWith("https://api.example.com/random")
     );
     await waitFor(() => screen.getByText("Mocked data"));
   });
